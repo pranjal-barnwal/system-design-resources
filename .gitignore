@@ -1,0 +1,5 @@
+# ignore all compiled .cpp and .java files
+*.out
+*.exe
+*.o
+*.class
