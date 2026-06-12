@@ -24,7 +24,7 @@ abstract class ModelTrainer {
     protected abstract void evaluateModel();
 
     // Provide a default save, but subclasses can override if needed
-    protected void saveModel() {
+    protected void saveModel() { 
         System.out.println("[Common] Saving model to disk as default format");
     }
 }
