@@ -1,3 +1,6 @@
+package Singleton;
+
+
 public class NoSingleton {
     public NoSingleton() {
         System.out.println("Singleton Constructor called. New Object created.");

@@ -1,3 +1,4 @@
+
 // Product Interface and subclasses
 interface Burger {
     void prepare();

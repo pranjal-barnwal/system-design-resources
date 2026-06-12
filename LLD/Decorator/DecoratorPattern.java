@@ -1,3 +1,6 @@
+package Decorator;
+
+
 // Component Interface: defines a common interface for Mario and all power-up decorators.
 interface Character {
     String getAbilities();

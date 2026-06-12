@@ -1,3 +1,4 @@
+
 // --- Burger Interface ---
 interface Burger {
     void prepare();

@@ -1,3 +1,6 @@
+package OOPs;
+
+
 /*
 Static Polymorphism (Compile-time polymorphism) in real life says that
 the same action can behave differently depending on the input parameters.

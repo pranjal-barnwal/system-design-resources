@@ -1,3 +1,6 @@
+package Singleton;
+
+
 public class ThreadSafeDoubleLockingSingleton {
     private static ThreadSafeDoubleLockingSingleton instance = null;
 

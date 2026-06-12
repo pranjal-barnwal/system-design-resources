@@ -1,3 +1,6 @@
+package Singleton;
+
+
 public class ThreadSafeEagerSingleton {
     private static ThreadSafeEagerSingleton instance = new ThreadSafeEagerSingleton();
 
