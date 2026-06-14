@@ -32,7 +32,7 @@ class ThousandHandler extends MoneyHandler {
         }
 
         if (notesNeeded > 0)
-            System.out.println("Dispensing " + notesNeeded + " x ₹1000 notes.");
+            System.out.println("Dispensing " + notesNeeded + " x ₹1000 notes, amount: ₹" + (notesNeeded * 1000));
 
         int remainingAmount = amount - (notesNeeded * 1000);
         if (remainingAmount > 0) {
@@ -63,7 +63,7 @@ class FiveHundredHandler extends MoneyHandler {
         }
 
         if (notesNeeded > 0)
-            System.out.println("Dispensing " + notesNeeded + " x ₹500 notes.");
+            System.out.println("Dispensing " + notesNeeded + " x ₹500 notes, amount: " + (notesNeeded * 500));
 
         int remainingAmount = amount - (notesNeeded * 500);
         if (remainingAmount > 0) {
@@ -94,7 +94,7 @@ class TwoHundredHandler extends MoneyHandler {
         }
 
         if (notesNeeded > 0)
-            System.out.println("Dispensing " + notesNeeded + " x ₹200 notes.");
+            System.out.println("Dispensing " + notesNeeded + " x ₹200 notes, amount: " + (notesNeeded * 200));
 
         int remainingAmount = amount - (notesNeeded * 200);
         if (remainingAmount > 0) {
@@ -125,7 +125,7 @@ class HundredHandler extends MoneyHandler {
         }
 
         if (notesNeeded > 0)
-            System.out.println("Dispensing " + notesNeeded + " x ₹100 notes.");
+            System.out.println("Dispensing " + notesNeeded + " x ₹100 notes, amount: ₹" + (notesNeeded * 100));
 
         int remainingAmount = amount - (notesNeeded * 100);
         if (remainingAmount > 0) {
@@ -140,10 +140,13 @@ class HundredHandler extends MoneyHandler {
 public class COR {
     public static void main(String[] args) {
         MoneyHandler thousandHandler = new ThousandHandler(3);
-        MoneyHandler fiveHundredHandler = new FiveHundredHandler(5);
+        MoneyHandler fiveHundredHandler = new FiveHundredHandler(1);
         MoneyHandler twoHundredHandler = new TwoHundredHandler(10);
         MoneyHandler hundredHandler = new HundredHandler(20);
 
+        // Setting up the chain of responsibility handler on who to be called next
+        // the reason, we didn't Hard-Coded is bcuz, some notes may be discontinued in future
+        // so we can easily change the chain without changing the code of handlers
         thousandHandler.setNextHandler(fiveHundredHandler);
         fiveHundredHandler.setNextHandler(twoHundredHandler);
         twoHundredHandler.setNextHandler(hundredHandler);

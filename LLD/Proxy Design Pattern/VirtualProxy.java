@@ -17,19 +17,23 @@ class RealImage implements IImage {
     }
 }
 
+//. inheriting from the same interface, so we can use this proxy in place of the real image without the client needing to know about it
 class ImageProxy implements IImage {
     private RealImage realImage;
     private String filename;
 
     public ImageProxy(String file) {
         this.filename = file;
+        // since object creation is expensive, 
+        // we delay it until it's actually needed with this Proxy pattern
         this.realImage = null;
     }
-
+    
     @Override
     public void display() {
         if (realImage == null) {
             realImage = new RealImage(filename);
+            // apply some compression or caching logic here if needed
         }
         realImage.display();
     }
