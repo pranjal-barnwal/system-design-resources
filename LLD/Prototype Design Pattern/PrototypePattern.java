@@ -12,7 +12,7 @@ class NPC implements Cloneable {
    
    public NPC(String name, int health, int attack, int defense) {
        // call database
-       // complex calc
+       // complex calculations
        this.name = name; 
        this.health = health; 
        this.attack = attack; 
