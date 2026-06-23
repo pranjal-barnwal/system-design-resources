@@ -42,6 +42,7 @@ class ImageProxy implements IImage {
 public class VirtualProxy {
     public static void main(String[] args) {
         IImage image1 = new ImageProxy("sample.jpg");
+        System.out.println("Image created, but not loaded yet.");
         image1.display();
     }
 }
