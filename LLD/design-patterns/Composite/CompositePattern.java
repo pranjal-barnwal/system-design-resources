@@ -4,6 +4,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
+class StringUtil {
+    static String spaces(int count) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < count; i++) sb.append(' ');
+        return sb.toString();
+    }
+}
+
 // Base interface for files and folders
 interface FileSystemItem {
     void ls(int indent);            
@@ -26,13 +34,13 @@ class File implements FileSystemItem {
 
     @Override
     public void ls(int indent) {
-        String indentSpaces = " ".repeat(indent);
+        String indentSpaces = StringUtil.spaces(indent);
         System.out.println(indentSpaces + name);
     }
 
     @Override
     public void openAll(int indent) {
-        String indentSpaces = " ".repeat(indent);
+        String indentSpaces = StringUtil.spaces(indent);
         System.out.println(indentSpaces + name);
     }
 
@@ -72,7 +80,7 @@ class Folder implements FileSystemItem {
 
     @Override
     public void ls(int indent) {
-        String indentSpaces = " ".repeat(indent);
+        String indentSpaces = StringUtil.spaces(indent);
         for (FileSystemItem child : children) {
             if (child.isFolder()) {
                 System.out.println(indentSpaces + "+ " + child.getName());
@@ -84,7 +92,7 @@ class Folder implements FileSystemItem {
 
     @Override
     public void openAll(int indent) {
-        String indentSpaces = " ".repeat(indent);
+        String indentSpaces = StringUtil.spaces(indent);
         System.out.println(indentSpaces + "+ " + name);
         for (FileSystemItem child : children) {
             child.openAll(indent + 4);

@@ -6,8 +6,8 @@
     {
       "id": "f6-guQlJyZQLlc9QU_A4C",
       "type": "text",
-      "x": 319,
-      "y": 145,
+      "x": -111.35037878787898,
+      "y": -230.0591856060605,
       "width": 1091.49560546875,
       "height": 105,
       "angle": 0,
@@ -23,11 +23,11 @@
       "index": "a1",
       "roundness": null,
       "seed": 897636130,
-      "version": 234,
-      "versionNonce": 735894818,
+      "version": 321,
+      "versionNonce": 242122381,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1777094927026,
+      "updated": 1782152970792,
       "link": null,
       "locked": false,
       "text": "Proxy Design Pattern :- We need to make proxy object of an actual object, \nfor multiple reasons, proxy is exectly behaves like actual object and client cant \ndiffrentiate it.",
@@ -43,8 +43,8 @@
     {
       "id": "Q47M_mqpBiXwE19o6p7Vp",
       "type": "text",
-      "x": 282.30078125,
-      "y": 351.4140625,
+      "x": -148.04959753787898,
+      "y": -23.64512310606051,
       "width": 1188.2392578125,
       "height": 100,
       "angle": 0,
@@ -60,11 +60,11 @@
       "index": "a3",
       "roundness": null,
       "seed": 2050977854,
-      "version": 405,
-      "versionNonce": 745647831,
+      "version": 492,
+      "versionNonce": 1989747949,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1781285866418,
+      "updated": 1782152970792,
       "link": null,
       "locked": false,
       "text": "Proxy can be with diffrent reasons like \n- Virtual proxy - Heavy operation of obejct creation, we dont want object to be created untill objecrt ka method is called\n- Protection proxy - Protecting actual object and adding validation checks\n- Remote Proxy ",
@@ -80,8 +80,8 @@
     {
       "id": "47M-tBjJFcVA2W8AgV4f-",
       "type": "text",
-      "x": 380,
-      "y": 465,
+      "x": -50.35037878787898,
+      "y": 89.94081439393949,
       "width": 1066.6993408203125,
       "height": 50,
       "angle": 0,
@@ -97,11 +97,11 @@
       "index": "a6",
       "roundness": null,
       "seed": 343751678,
-      "version": 168,
-      "versionNonce": 1323867774,
+      "version": 255,
+      "versionNonce": 593493837,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1777095107931,
+      "updated": 1782152970792,
       "link": null,
       "locked": false,
       "text": "Proxy is representative of an actual resource, such that client does not know that if it is talking to actual \nobjject or proxy ",
@@ -117,8 +117,8 @@
     {
       "id": "c_3tTn0SDS0y7Q7k1zsx_",
       "type": "text",
-      "x": 298.20001220703125,
-      "y": 545.199951171875,
+      "x": -88.15178703539323,
+      "y": 470.1289284446025,
       "width": 1121.3198852539062,
       "height": 125,
       "angle": 0,
@@ -134,11 +134,11 @@
       "index": "a7",
       "roundness": null,
       "seed": 566626110,
-      "version": 747,
-      "versionNonce": 1435497506,
+      "version": 913,
+      "versionNonce": 1939684035,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1777095428976,
+      "updated": 1782152963772,
       "link": null,
       "locked": false,
       "text": "Virtual Proxy :- An actual object creation in construcutor or any way object creation is very very expensive and\ntime consuming process, also takes very much memory in RAM, hence if the object is created and it first takes\nmore time also takes so much memeory in RAM and it is wasted or just keeping the memory space untill its\nmethods is called that is called very less often, hence we want that the object should not be created untill its\nmehtod is called - That is actually use of the vitual proxy simple!!!",
@@ -5722,10 +5722,10 @@
     {
       "id": "vEa1sXxcLYYJDGCGqrtmG",
       "type": "ellipse",
-      "x": -843.7932923249049,
-      "y": 180.46842573678254,
-      "width": 249.42883362258897,
-      "height": 231.3699393918197,
+      "x": 57.03530615994396,
+      "y": 201.7731664908787,
+      "width": 185.66319639094016,
+      "height": 172.22099735775313,
       "angle": 0,
       "strokeColor": "transparent",
       "backgroundColor": "#b2f2bb",
@@ -5737,8 +5737,8 @@
       "groupIds": [],
       "strokeSharpness": "sharp",
       "seed": 1726805113,
-      "version": 549,
-      "versionNonce": 39176727,
+      "version": 864,
+      "versionNonce": 31677283,
       "isDeleted": false,
       "boundElements": [
         {
@@ -5750,9 +5750,9 @@
           "type": "arrow"
         }
       ],
-      "updated": 1781285685510,
+      "updated": 1782152997650,
       "link": null,
-      "locked": false,
+      "locked": true,
       "index": "b1Y",
       "frameId": null,
       "roundness": null
@@ -5760,10 +5760,10 @@
     {
       "id": "hP4XonuuU8nMIZ1F9Fmib",
       "type": "ellipse",
-      "x": -463.24566612298133,
-      "y": 178.84207357332085,
-      "width": 178.92853314181968,
-      "height": 231.3699393918197,
+      "x": 340.29721952213345,
+      "y": 200.5625857543207,
+      "width": 133.1860591503162,
+      "height": 172.22099735775313,
       "angle": 0,
       "strokeColor": "#1971c2",
       "backgroundColor": "#a5d8ff",
@@ -5775,8 +5775,8 @@
       "groupIds": [],
       "strokeSharpness": "sharp",
       "seed": 1896515607,
-      "version": 672,
-      "versionNonce": 163802359,
+      "version": 991,
+      "versionNonce": 85770317,
       "isDeleted": false,
       "boundElements": [
         {
@@ -5796,9 +5796,9 @@
           "type": "arrow"
         }
       ],
-      "updated": 1781287045720,
+      "updated": 1782152997650,
       "link": null,
-      "locked": false,
+      "locked": true,
       "index": "b1Z",
       "frameId": null,
       "roundness": null
@@ -5806,10 +5806,10 @@
     {
       "id": "ATCW9sQN7rTZou2rctoKz",
       "type": "ellipse",
-      "x": -137.29915169990443,
-      "y": 182.43281876562855,
-      "width": 177.2378280136145,
-      "height": 231.3699393918197,
+      "x": 582.9166105579003,
+      "y": 203.23536908953847,
+      "width": 131.92757706667666,
+      "height": 172.22099735775313,
       "angle": 0,
       "strokeColor": "transparent",
       "backgroundColor": "#a5d8ff",
@@ -5821,8 +5821,8 @@
       "groupIds": [],
       "strokeSharpness": "sharp",
       "seed": 1113675129,
-      "version": 776,
-      "versionNonce": 1657200825,
+      "version": 1091,
+      "versionNonce": 2017982211,
       "isDeleted": false,
       "boundElements": [
         {
@@ -5834,9 +5834,9 @@
           "type": "arrow"
         }
       ],
-      "updated": 1781287036076,
+      "updated": 1782152997650,
       "link": null,
-      "locked": false,
+      "locked": true,
       "index": "b1a",
       "frameId": null,
       "roundness": null
@@ -5844,10 +5844,10 @@
     {
       "id": "9atjMqSR1Ol6S3lv1eQS3",
       "type": "text",
-      "x": -747.7860570039944,
-      "y": 424.69831730769226,
-      "width": 62.215972900390625,
-      "height": 35,
+      "x": 128.49861666601163,
+      "y": 383.56651277208147,
+      "width": 46.31066997144681,
+      "height": 26.052368442356414,
       "angle": 0,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "#b2f2bb",
@@ -5861,15 +5861,15 @@
       "index": "b1b",
       "roundness": null,
       "seed": 1298501049,
-      "version": 40,
-      "versionNonce": 1289937751,
+      "version": 351,
+      "versionNonce": 161033901,
       "isDeleted": false,
-      "boundElements": null,
-      "updated": 1781285618440,
+      "boundElements": [],
+      "updated": 1782152997650,
       "link": null,
-      "locked": false,
+      "locked": true,
       "text": "User",
-      "fontSize": 28,
+      "fontSize": 20.841894753885132,
       "fontFamily": 5,
       "textAlign": "left",
       "verticalAlign": "top",
@@ -5881,10 +5881,10 @@
     {
       "id": "9v56LFavUYOAq7a0IJwy8",
       "type": "text",
-      "x": -413.2164593195745,
-      "y": 430.7680288461537,
-      "width": 78.70796203613281,
-      "height": 35,
+      "x": 377.53662890845345,
+      "y": 388.08452309604775,
+      "width": 58.58653789463809,
+      "height": 26.052368442356414,
       "angle": 0,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "#b2f2bb",
@@ -5898,15 +5898,15 @@
       "index": "b1c",
       "roundness": null,
       "seed": 946157975,
-      "version": 127,
-      "versionNonce": 306945785,
+      "version": 438,
+      "versionNonce": 1524113059,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1781285635857,
+      "updated": 1782152997650,
       "link": null,
-      "locked": false,
+      "locked": true,
       "text": "Proxy",
-      "fontSize": 28,
+      "fontSize": 20.841894753885132,
       "fontFamily": 5,
       "textAlign": "left",
       "verticalAlign": "top",
@@ -5918,10 +5918,10 @@
     {
       "id": "fC1E_m4fOQWxMMvK2QdF8",
       "type": "text",
-      "x": -58.038475522060935,
-      "y": 435.7109374999999,
-      "width": 123.67594909667969,
-      "height": 35,
+      "x": 641.9145630943426,
+      "y": 391.7637938796738,
+      "width": 92.05861123785189,
+      "height": 26.052368442356414,
       "angle": 0,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "#b2f2bb",
@@ -5935,15 +5935,15 @@
       "index": "b1d",
       "roundness": null,
       "seed": 2099836089,
-      "version": 166,
-      "versionNonce": 1520757559,
+      "version": 477,
+      "versionNonce": 1966657805,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1781285642316,
+      "updated": 1782152997650,
       "link": null,
-      "locked": false,
+      "locked": true,
       "text": "Resource",
-      "fontSize": 28,
+      "fontSize": 20.841894753885132,
       "fontFamily": 5,
       "textAlign": "left",
       "verticalAlign": "top",
@@ -5955,10 +5955,10 @@
     {
       "id": "r8cvP_Da3zogq2xwhxnwz",
       "type": "arrow",
-      "x": -621.306189215533,
-      "y": 225.94230769230765,
-      "width": 182.89513221153845,
-      "height": 42.570612980769226,
+      "x": 224.21061743091954,
+      "y": 234.82294502237212,
+      "width": 126.28151917733466,
+      "height": 30.888720445276267,
       "angle": 0,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "#b2f2bb",
@@ -5974,37 +5974,37 @@
         "type": 2
       },
       "seed": 2069653657,
-      "version": 169,
-      "versionNonce": 1482932633,
+      "version": 1126,
+      "versionNonce": 876761667,
       "isDeleted": false,
-      "boundElements": null,
-      "updated": 1781285653461,
+      "boundElements": [],
+      "updated": 1782152997650,
       "link": null,
-      "locked": false,
+      "locked": true,
       "points": [
         [
           0,
           0
         ],
         [
-          83.46604567307702,
-          -42.570612980769226
+          60.561950391294246,
+          -30.888720445276267
         ],
         [
-          182.89513221153845,
-          -0.743689903846132
+          126.28151917733466,
+          -3.242410457313674
         ]
       ],
       "lastCommittedPoint": null,
       "startBinding": {
         "elementId": "vEa1sXxcLYYJDGCGqrtmG",
-        "focus": -0.11346514627477107,
-        "gap": 1.0360617325100838
+        "focus": -0.11346514627477058,
+        "gap": 1
       },
       "endBinding": {
         "elementId": "hP4XonuuU8nMIZ1F9Fmib",
-        "focus": 0.27485399257036874,
-        "gap": 5.994001530782712
+        "focus": 0.2748539925703689,
+        "gap": 4.431689035663217
       },
       "startArrowhead": null,
       "endArrowhead": "arrow",
@@ -6013,10 +6013,10 @@
     {
       "id": "hSHsreV4DRFWViKZK0RRr",
       "type": "arrow",
-      "x": -289.29281200525315,
-      "y": 241.32115100049563,
-      "width": 158.5790023817588,
-      "height": 54.42313979660295,
+      "x": 469.7663660744713,
+      "y": 247.07595693940567,
+      "width": 117.88432691007215,
+      "height": 40.383968626331075,
       "angle": 0,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "#b2f2bb",
@@ -6032,36 +6032,36 @@
         "type": 2
       },
       "seed": 1985015641,
-      "version": 194,
-      "versionNonce": 75260313,
+      "version": 1151,
+      "versionNonce": 1702176621,
       "isDeleted": false,
-      "boundElements": null,
-      "updated": 1781287036077,
+      "boundElements": [],
+      "updated": 1782152997650,
       "link": null,
-      "locked": false,
+      "locked": true,
       "points": [
         [
           0,
           0
         ],
         [
-          86.17322134741244,
-          -44.60811013511102
+          64.15657800429227,
+          -33.21105620468075
         ],
         [
-          158.5790023817588,
-          9.815029661491934
+          117.88432691007215,
+          7.172912421650324
         ]
       ],
       "lastCommittedPoint": null,
       "startBinding": {
         "elementId": "hP4XonuuU8nMIZ1F9Fmib",
-        "focus": -0.05845701071824898,
-        "gap": 4.718906436305399
+        "focus": -0.058457010718247916,
+        "gap": 3.4828167489647384
       },
       "endBinding": {
         "elementId": "ATCW9sQN7rTZou2rctoKz",
-        "focus": -0.08051898191467885,
+        "focus": -0.08051898191468002,
         "gap": 1
       },
       "startArrowhead": null,
@@ -6071,10 +6071,10 @@
     {
       "id": "aag2JTh2AmeAxjK5G4iIi",
       "type": "arrow",
-      "x": -134.41561918686426,
-      "y": 364.25318785931074,
-      "width": 162.89678458480654,
-      "height": 36.64979602530593,
+      "x": 585.1073147421772,
+      "y": 338.5548744580927,
+      "width": 121.30793316369581,
+      "height": 27.284962095517198,
       "angle": 0,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "#a5d8ff",
@@ -6090,37 +6090,37 @@
         "type": 2
       },
       "seed": 165318809,
-      "version": 178,
-      "versionNonce": 1502529145,
+      "version": 1135,
+      "versionNonce": 895816163,
       "isDeleted": false,
-      "boundElements": null,
-      "updated": 1781287036077,
+      "boundElements": [],
+      "updated": 1782152997650,
       "link": null,
-      "locked": false,
+      "locked": true,
       "points": [
         [
           0,
           0
         ],
         [
-          -75.9530700286686,
-          32.72277367915069
+          -56.58026170626933,
+          24.376408982843397
         ],
         [
-          -162.89678458480654,
-          -3.9270223461552405
+          -121.30793316369581,
+          -2.9085531126738013
         ]
       ],
       "lastCommittedPoint": null,
       "startBinding": {
         "elementId": "ATCW9sQN7rTZou2rctoKz",
-        "focus": -0.1897651077659984,
-        "gap": 11.696525313001208
+        "focus": -0.18976510776599825,
+        "gap": 8.60962651688789
       },
       "endBinding": {
         "elementId": "hP4XonuuU8nMIZ1F9Fmib",
-        "focus": 0.21880953258664382,
-        "gap": 2.5677284795577298
+        "focus": 0.21880953258664476,
+        "gap": 1.8878131796424285
       },
       "startArrowhead": null,
       "endArrowhead": "arrow",
@@ -6129,10 +6129,10 @@
     {
       "id": "RR2keB_4hdqWN-jBHzYBp",
       "type": "arrow",
-      "x": -448.51472286937906,
-      "y": 352.6249999999999,
-      "width": 157.83503605769238,
-      "height": 40.57241586538464,
+      "x": 348.0476929938329,
+      "y": 331.43905350048635,
+      "width": 114.27104063273889,
+      "height": 30.200498629164176,
       "angle": 0,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "#a5d8ff",
@@ -6148,37 +6148,37 @@
         "type": 2
       },
       "seed": 1861194713,
-      "version": 102,
-      "versionNonce": 1089824439,
+      "version": 1059,
+      "versionNonce": 211268045,
       "isDeleted": false,
-      "boundElements": null,
-      "updated": 1781285687594,
+      "boundElements": [],
+      "updated": 1782152997650,
       "link": null,
-      "locked": false,
+      "locked": true,
       "points": [
         [
           0,
           0
         ],
         [
-          -78.94381009615392,
-          37.342247596153925
+          -55.54753820661735,
+          26.275269999533258
         ],
         [
-          -157.83503605769238,
-          -3.2301682692307168
+          -114.27104063273889,
+          -3.9252286296309187
         ]
       ],
       "lastCommittedPoint": null,
       "startBinding": {
         "elementId": "hP4XonuuU8nMIZ1F9Fmib",
-        "focus": -0.14396736207169042,
-        "gap": 2.3950330791445085
+        "focus": -0.143967362071691,
+        "gap": 1.7730843697675498
       },
       "endBinding": {
         "elementId": "vEa1sXxcLYYJDGCGqrtmG",
-        "focus": -0.02632154285098547,
-        "gap": 1.7566401240987657
+        "focus": -0.026321542850983128,
+        "gap": 1.3069411759042018
       },
       "startArrowhead": null,
       "endArrowhead": "arrow",
@@ -6187,8 +6187,8 @@
     {
       "id": "FwaKTg3NNo755B13G9xZx",
       "type": "text",
-      "x": 402.0150160171886,
-      "y": 280.1286798007245,
+      "x": -28.33536277069038,
+      "y": -94.930505805336,
       "width": 1015.2991943359375,
       "height": 50,
       "angle": 0,
@@ -6204,11 +6204,11 @@
       "index": "b1i",
       "roundness": null,
       "seed": 386857431,
-      "version": 188,
-      "versionNonce": 1589648023,
+      "version": 275,
+      "versionNonce": 454856109,
       "isDeleted": false,
-      "boundElements": null,
-      "updated": 1781285868569,
+      "boundElements": [],
+      "updated": 1782152970792,
       "link": null,
       "locked": false,
       "text": "Proxy may be used for multiple reasons like security(not allowing unauthenticated requests from client) \nor some data invalidation or processing.",
