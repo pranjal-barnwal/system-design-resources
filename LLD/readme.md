@@ -71,6 +71,8 @@ Comprehensive notes covering all GoF patterns plus modern patterns. Every patter
 
 **In Simple Terms:** Imagine a country can have only one president at a time. No matter who asks "who is the president?", everyone gets the same answer — the same person. Singleton works the same way: no matter how many times you ask for the object, you always get the exact same one.
 
+**The Core Problem:** In any application, certain resources are inherently unique — a thread pool, a connection pool, a configuration registry, the file system handle. If multiple instances are accidentally created, they either conflict with each other (two connection pools exhausting DB connections), waste memory, or produce inconsistent behavior (two config objects with different values). The core problem is: **how do you guarantee exactly one instance exists and prevent accidental duplication, while still providing easy access from anywhere in the application?** Before Singleton, developers relied on global variables (unsafe, no lazy init, no encapsulation) or convention ("just don't create two" — error-prone). Singleton encapsulates the uniqueness constraint inside the class itself.
+
 **Intent:** Ensure a class has exactly one instance and provide a global point of access to it.
 
 **Core Mechanism:**
@@ -490,6 +492,8 @@ public class FactoryMethod {
 
 **In Simple Terms:** Imagine furnishing a room — you pick either a "Modern" catalog or a "Victorian" catalog. Once you pick a catalog, ALL your furniture (sofa, table, chair) comes from that same style. You can't accidentally mix a modern sofa with a Victorian table. Abstract Factory is that catalog — it gives you a complete matching set.
 
+**The Core Problem:** When your system uses MULTIPLE related objects that MUST be compatible with each other (UI widgets from the same toolkit, cloud services from the same provider, database objects from the same vendor), nothing prevents a developer from accidentally mixing incompatible products — creating an AWS S3 client but a GCP PubSub queue. The bug is silent until runtime. **How do you guarantee that related objects always come from the same family, making cross-family mixing a compile-time error rather than a runtime surprise?** Abstract Factory solves this by bundling all creation methods for a family into one factory — pick the factory, and ALL products are guaranteed compatible.
+
 **Intent:** Provide an interface for creating families of related objects without specifying their concrete classes.
 
 **Core Mechanism:**
@@ -715,6 +719,9 @@ public class AbstractFactory {
 **Definition:** The Builder pattern separates the construction of a complex object from its representation, allowing the same construction process to create various representations. It provides a step-by-step approach to building composite objects, isolating the construction logic from the final product.
 
 **In Simple Terms:** Think of ordering a custom burger. You don’t shout all 10 ingredients at once — you go step by step: "add lettuce, add cheese, no onions, extra sauce." At the end you say "done" and get your custom burger. Builder lets you construct complex objects one piece at a time, and only finalize when you’re ready.
+
+
+**The Core Problem:** Complex objects have many fields — some required, some optional, some with dependencies on each other. Constructors with 10+ parameters are unreadable. Multiple constructors (telescoping) explode combinatorially. Setters break immutability and allow partially-constructed objects to escape. **How do you construct complex objects readably, enforce that required fields are set, allow flexible optional configuration, AND guarantee the final object is valid and immutable?** Builder separates the mutable construction phase (accumulate options) from the immutable result (validate and freeze), giving you readable named methods, flexible ordering, and compile-time or runtime safety.
 
 **Intent:** Separate the construction of a complex object from its representation so that the same construction process can create different representations.
 
@@ -1015,6 +1022,9 @@ public class Main {
 
 **In Simple Terms:** Instead of filling out a job application form from scratch every time, you photocopy a filled-out template and just change the details that differ. Prototype works the same way — clone an existing fully-configured object and tweak what’s different, rather than building from nothing.
 
+
+**The Core Problem:** Some objects are expensive to create from scratch — they require database queries, file parsing, network calls, or complex computation just to reach their initial configured state. If you need 100 similar objects, paying that initialization cost 100 times is wasteful. Additionally, sometimes you need to create objects but don't know their concrete class (you only have a base interface reference). **How do you create new instances efficiently when initialization is expensive AND decouple creation from knowing the concrete type?** Prototype solves both: clone an existing configured instance (skip expensive init) through the base interface (no `new ConcreteClass()` needed). The prototype IS the factory.
+
 **Intent:** Create new objects by copying existing ones rather than constructing from scratch.
 
 **Core Mechanism:**
@@ -1188,6 +1198,9 @@ public class PrototypeDemo {
 
 **In Simple Terms:** When you travel abroad, your laptop charger doesn’t fit the wall socket. You use a power adapter — it doesn’t change how your charger works or how the socket works, it just makes them compatible. The Adapter pattern is that plug converter for code.
 
+
+**The Core Problem:** You have existing code that works perfectly, and a new component/library/service whose interface doesn't match what your code expects. You can't modify either side — the existing code is stable (or you don't own it), and the third-party library has its own API. **How do you make two incompatible interfaces work together without modifying either one?** Adapter wraps the incompatible class, implementing the interface your code expects while internally translating calls to the third-party's actual API. It's a permanent translator between two worlds that were designed independently.
+
 **Intent:** Convert the interface of a class into another interface clients expect. Makes incompatible interfaces work together.
 
 **Core Mechanism:**
@@ -1345,6 +1358,9 @@ public class AdapterPattern {
 **Definition:** The Bridge pattern decouples an abstraction from its implementation so that the two can vary independently. It splits a large class or a set of closely related classes into two separate hierarchies — abstraction and implementation — which can be developed independently of each other.
 
 **In Simple Terms:** Think of a TV remote (abstraction) and the TV itself (implementation). Any remote can work with any TV — a basic remote or a smart remote can control a Sony or Samsung TV. You can change the remote without changing the TV, and vice versa. Bridge separates the "what" from the "how" so both sides can evolve freely.
+
+
+**The Core Problem:** You have a concept with TWO independently varying dimensions — for example, shapes × renderers, or notifications × channels. Using inheritance to combine them creates M×N classes (CircleOpenGL, CircleDirectX, SquareOpenGL, SquareDirectX...). Adding one shape adds N classes. Adding one renderer adds M classes. The hierarchy explodes. **How do you prevent class explosion when two orthogonal dimensions of variation exist?** Bridge separates the two dimensions into independent hierarchies connected by composition — M + N classes instead of M × N, and each dimension evolves independently.
 
 **Intent:** Decouple an abstraction from its implementation so that the two can vary independently.
 
@@ -1517,6 +1533,9 @@ public class BridgePattern {
 
 **In Simple Terms:** Think of a plain coffee. You can add milk (one decorator), add sugar (another decorator), add whipped cream (yet another). Each addition wraps the previous one, and you can stack them in any combination. You never modify the original coffee — you just keep wrapping it with extras.
 
+
+**The Core Problem:** You want to add behavior to individual objects (not entire classes) at runtime — logging, caching, compression, encryption — in flexible combinations. Inheritance can't do this: it applies to ALL instances of a class, is fixed at compile time, and combinatorial explosions occur (BufferedCompressedEncryptedStream = separate class for each combination). **How do you add responsibilities to objects dynamically, in any combination, without modifying existing classes?** Decorator wraps objects in layers — each layer implements the same interface and adds one behavior before/after delegating to the wrapped object. Stack freely: any order, any combination.
+
 **Intent:** Attach additional responsibilities to an object dynamically. Flexible alternative to subclassing for extending functionality.
 
 **Core Mechanism:**
@@ -1681,6 +1700,9 @@ public class DecoratorPattern {
 **Definition:** The Proxy pattern provides a surrogate or placeholder for another object to control access to it. The proxy object acts as an intermediary, adding a level of indirection to support controlled, lazy, remote, or protected access to the real subject.
 
 **In Simple Terms:** Think of a security guard at a building entrance. The guard isn’t the building, but you have to go through them to get in. They might check your ID (protection proxy), call ahead to see if someone’s available (virtual proxy), or represent a building in another city (remote proxy). The proxy controls your access to the real thing.
+
+
+**The Core Problem:** You need to control HOW, WHEN, or WHETHER a client accesses an object — lazy-load expensive resources, check permissions, cache results, log access, or represent a remote object locally — but you don't want the client to know about this control. The client should think it's using the real object. **How do you add access control, lazy loading, caching, or remote access transparently without changing the client code or the real object?** Proxy implements the same interface as the real subject and intercepts all calls, adding its control logic before/after (or instead of) delegating to the real object.
 
 **Intent:** Provide a surrogate or placeholder for another object to control access to it.
 
@@ -1886,6 +1908,9 @@ public class ProtectionProxy {
 
 **In Simple Terms:** Think of a file system: a folder can contain files AND other folders. Whether you ask for the size of a single file or an entire folder (which recursively sums its children), you use the same operation. Composite lets you treat a single item and a group of items with the exact same code.
 
+
+**The Core Problem:** You have a tree/hierarchical structure (file system, UI components, organization chart) where individual items and groups of items need to be treated the same way. Without the pattern, client code needs constant `instanceof` checks: "is this a file or a folder?" before every operation. **How do you let clients treat individual objects and compositions (groups) uniformly through the same interface?** Composite gives both leaf nodes and container nodes the same interface — `getSize()` on a file returns its size, `getSize()` on a folder recursively sums its children. Client code doesn't know or care which it has.
+
 **Intent:** Compose objects into tree structures to represent part-whole hierarchies. Treat individual objects and compositions uniformly.
 
 **Core Mechanism:**
@@ -2055,6 +2080,9 @@ public class CompositePattern {
 
 **In Simple Terms:** When you press "brew" on a coffee machine, you don’t manually grind beans, boil water, measure dosage, and time the extraction. The one-button interface hides 10 steps behind it. Facade is that single simple button over a complicated system — it doesn’t add new features, it just makes existing ones easier to use together.
 
+
+**The Core Problem:** A subsystem has grown complex — 10+ classes with intricate interactions, ordering requirements, and configuration. Every client must understand this complexity to use it correctly, leading to duplicated orchestration code and fragile coupling to internal details. **How do you provide a simple entry point to a complex subsystem without reducing its power for advanced users?** Facade creates a high-level interface that orchestrates common subsystem workflows in one call, while still allowing direct subsystem access for power users who need fine-grained control.
+
 **Intent:** Provide a simplified interface to a complex subsystem. One entry point hides orchestration complexity.
 
 **Core Mechanism:** Facade delegates to multiple subsystem classes, orchestrating their interactions. Client → Facade → (SubsystemA, SubsystemB, SubsystemC). Facade doesn't add new functionality — it organizes EXISTING subsystem capabilities into convenient workflows.
@@ -2169,6 +2197,9 @@ public class FacadePattern {
 
 **In Simple Terms:** In a word processor, every letter ‘A’ on screen looks different (size, position, color) but they all share the same glyph shape data. Instead of storing the ‘A’ shape 10,000 times, you store it once and reuse it everywhere with different positions. Flyweight is about sharing the common parts to save memory.
 
+
+**The Core Problem:** Your system needs to create thousands or millions of similar objects (characters in a document, trees in a game world, cells in a spreadsheet). Each object individually consumes memory, and at scale, the system runs out of RAM — even though most objects share the same immutable data (font, sprite, style). **How do you support massive numbers of fine-grained objects without exhausting memory?** Flyweight separates shared immutable state (intrinsic — stored once, referenced by many) from per-instance variable state (extrinsic — passed in at use time), reducing millions of objects to a small pool of shared instances.
+
 **Intent:** Share state efficiently to support large numbers of similar objects without excessive memory.
 
 **Core Mechanism:**
@@ -2275,6 +2306,9 @@ public class FlyweightDemo {
 **Definition:** The Strategy pattern defines a family of algorithms, encapsulates each one in a separate class, and makes them interchangeable. It lets the algorithm vary independently from the clients that use it, enabling runtime selection of behavior without conditional statements.
 
 **In Simple Terms:** Think of getting to the airport — you can drive, take a cab, ride the bus, or cycle. The goal is the same (reach the airport), but the strategy differs. You pick which one at runtime based on budget, time, or weather. Strategy lets your code swap algorithms the same way you swap transportation modes.
+
+
+**The Core Problem:** A class needs to perform an operation, but the algorithm for that operation varies — different sorting methods, different pricing rules, different compression algorithms. Without the pattern, you get a growing switch/if-else block inside the class: `if (algo == "quicksort") ... else if (algo == "mergesort") ...`. Adding a new algorithm means modifying the class (OCP violation), and the class becomes bloated with unrelated algorithm code (SRP violation). **How do you make algorithms interchangeable at runtime without polluting the context class with conditional logic?** Strategy extracts each algorithm into its own class behind a common interface — the context delegates to whichever strategy is injected, and new algorithms require only new classes.
 
 **Intent:** Define a family of algorithms, encapsulate each one, and make them interchangeable.
 
@@ -2469,6 +2503,9 @@ public class StrategyDesignPattern {
 
 **In Simple Terms:** Think of subscribing to a YouTube channel. When the creator uploads a new video, every subscriber gets notified automatically — you don’t have to keep checking. The creator doesn’t need to know who you are specifically. Observer is exactly this: one thing changes, everyone interested gets told.
 
+
+**The Core Problem:** Object A changes, and objects B, C, D need to react — but A shouldn't know about B, C, D specifically (that would create tight coupling). The set of interested parties may change dynamically (subscribers join and leave). Polling ("has A changed yet?") wastes resources. **How do you notify a dynamic, unknown set of dependents when state changes, without the subject knowing who they are or what they do with the notification?** Observer provides a subscription mechanism — dependents register interest, and the subject automatically pushes notifications to all registered observers on state change.
+
 **Intent:** Define a one-to-many dependency so that when one object changes state, all dependents are notified automatically.
 
 **Core Mechanism:**
@@ -2644,6 +2681,9 @@ public class ObserverDesignPattern {
 
 **In Simple Terms:** Think of a vending machine. When it’s in "no coin" state, pressing the button does nothing. Insert a coin — now it’s in "has coin" state and pressing the button dispenses a drink. Same machine, same button, but completely different behavior depending on what state it’s in. State pattern makes each state a separate object that handles behavior for that state.
 
+
+**The Core Problem:** An object's behavior depends on its current state, and the code is riddled with conditionals: `if (state == PAID) { ... } else if (state == SHIPPED) { ... } else if (state == CANCELLED) { ... }`. Every new state requires modifying every conditional. Every new operation requires checking every state. The conditionals grow into unmaintainable spaghetti. **How do you eliminate state-dependent conditionals and make state transitions explicit, self-contained, and independently extensible?** State pattern replaces conditionals with polymorphism — each state is an object that handles its own behavior, and transitions happen by swapping the state object.
+
 **Intent:** Allow an object to alter its behavior when its internal state changes. The object appears to change its class.
 
 **Core Mechanism:**
@@ -2681,6 +2721,9 @@ A: (1) **Synchronized context**: `synchronized(context) { state.handle(event); }
 
 **Q: "When do you graduate from State pattern to a state machine library (Spring Statemachine, XState)?"**
 A: State pattern: fewer than 10 states, transitions are straightforward, state-specific behavior is the focus. Library: 10+ states, complex guards/conditions on transitions, nested/hierarchical states, need visualization/documentation of the state machine, need to persist and restore machines. Libraries give you: guard conditions, transition actions, state entry/exit hooks, hierarchical states, and visual diagrams — all things you'd have to build by hand with raw State pattern.
+
+**Q: "The VendingState interface has 6 methods but most states only handle 1-2 meaningfully. ~60% of implementations are 'you can't do that' no-ops. Is this an ISP violation?"**
+A: It's an inherent ISP tension in the classic State pattern — and the right trade-off. The alternative (different interfaces per state) would force the `VendingMachine` context to know which state it's in via `instanceof` checks, defeating the pattern's purpose. The "invalid" handlers are doing real work: providing user-friendly feedback. However, you CAN reduce the no-op surface: (1) Separate admin operations (`refill`) from user operations — refill works in ANY state, so it belongs on `VendingMachine` directly, not in the state interface. (2) Make `dispense` internal — users don't manually trigger dispensing; it should happen automatically inside `selectItem`. This reduces the interface from 6 → 3 user methods and drops no-ops from ~60% to ~30%.
 
 **When to use:** Object behavior depends on state (order lifecycle, connection states, game states, UI wizard steps). Complex conditionals based on state. State machines with defined transitions.
 
@@ -2788,6 +2831,9 @@ public class StateDemo {
 **Definition:** The Command pattern encapsulates a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations. It decouples the object that invokes the operation from the one that knows how to perform it.
 
 **In Simple Terms:** Think of ordering at a restaurant. You don’t walk into the kitchen yourself — you tell the waiter (invoker) what you want, they write it on an order slip (command object), and the chef (receiver) executes it. The slip can be queued, cancelled, or replayed. Command turns "do something" into a tangible object you can pass around.
+
+
+**The Core Problem:** Operations in software are ephemeral — a method call happens and disappears. But sometimes you need to TREAT operations as tangible things: queue them for later, undo them, log them for audit, replay them, batch them into transactions. A raw method call can't be stored in a list, serialized to a queue, or reversed. **How do you reify (make concrete) an operation so it becomes a first-class object that can be stored, passed around, queued, undone, and replayed?** Command wraps the operation (receiver + action + parameters) into an object with `execute()` and optionally `undo()` methods.
 
 **Intent:** Encapsulate a request as an object — enables queuing, logging, undo, and transactional behavior.
 
@@ -2937,6 +2983,9 @@ public class CommandPattern {
 
 **In Simple Terms:** Think of a recipe template: "1) Prepare ingredients, 2) Cook, 3) Plate, 4) Serve." Every chef follows this structure, but HOW they cook (step 2) varies — one grills, another bakes. The overall sequence is locked, but specific steps are customizable by subclasses. Template Method is the recipe with blanks to fill in.
 
+
+**The Core Problem:** Multiple subclasses share the same overall algorithm STRUCTURE (steps and their order) but differ in HOW specific steps are implemented. Without the pattern, each subclass duplicates the entire algorithm — including the shared parts — leading to code duplication and inconsistency when the shared structure changes. **How do you define a fixed algorithm skeleton that subclasses can customize at specific extension points without redefining the overall flow?** Template Method locks the sequence in a base class `final` method and lets subclasses override only the variable steps.
+
 **Intent:** Define the skeleton of an algorithm in a base class, letting subclasses override specific steps without changing the structure.
 
 **Core Mechanism:**
@@ -3065,6 +3114,9 @@ public class TemplateMethodPattern {
 **Definition:** The Chain of Responsibility pattern avoids coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. It chains the receiving objects and passes the request along the chain until an object handles it.
 
 **In Simple Terms:** Think of an expense approval system. You submit a $5000 expense — your team lead can approve up to $1000 (passes it on), your manager can approve up to $5000 (handles it). If it were $50,000, it’d go to the VP. Each person in the chain either handles it or passes it up. No one needs to know who ultimately approves.
+
+
+**The Core Problem:** A request needs to be handled, but the sender doesn't know (and shouldn't know) WHICH object will handle it. Hardcoding the handler creates tight coupling. What if the handler changes? What if multiple handlers should get a chance? **How do you decouple the sender from the receiver when multiple objects might handle the request, and the decision of who handles it should be dynamic?** Chain of Responsibility creates a linked list of potential handlers — the request flows through until one handles it (or all get a chance), with zero coupling between sender and receivers.
 
 **Intent:** Pass a request along a chain of handlers. Each handler decides to process it or pass it to the next.
 
@@ -3238,6 +3290,9 @@ public class COR {
 
 **In Simple Terms:** Think of an air traffic control tower. Planes don’t talk to each other directly ("Hey Flight 302, move left!"). Instead, every plane talks only to the tower, and the tower coordinates everyone. The Mediator is that control tower — it prevents a web of direct connections and centralizes all the coordination logic.
 
+
+**The Core Problem:** When N components communicate directly with each other, you get N×(N-1)/2 connections — a tangled web where changing one component ripples unpredictably through all others. Adding a new component means wiring it to every existing one. **How do you reduce many-to-many component coupling to manageable one-to-one relationships?** Mediator centralizes all interaction logic in one coordinator — components only know the mediator, reducing N² coupling to N connections and making the interaction logic visible in one place.
+
 **Intent:** Centralize complex communication between objects. Components communicate through the mediator rather than directly.
 
 **Core Mechanism:**
@@ -3350,6 +3405,9 @@ public class MediatorDemo {
 
 **In Simple Terms:** Think of the "Save Game" feature in a video game. You save your progress (memento) at any checkpoint. If you die, you reload from that save point without needing to know the internal details of the game engine. Memento is Ctrl+Z for objects — snapshot now, restore later.
 
+
+**The Core Problem:** Sometimes you need to roll back an object to a previous state (undo in an editor, checkpoint in a game, transaction rollback). But the object's internal state may be private — accessing it for save/restore would break encapsulation. **How do you capture and restore an object's internal state without exposing its private implementation details to the outside world?** Memento creates an opaque snapshot that only the originator can read — the caretaker stores it but cannot inspect or tamper with it.
+
 **Intent:** Capture an object's internal state as an opaque snapshot for later restoration, without violating encapsulation.
 
 **Core Mechanism:**
@@ -3460,6 +3518,9 @@ public class MementoDemo {
 
 **In Simple Terms:** Think of a TV remote with "Next Channel" and "Previous Channel" buttons. You don’t need to know how channels are stored internally (array? linked list? database?). You just press Next and get the next channel. Iterator gives you a uniform way to go through any collection one item at a time.
 
+
+**The Core Problem:** Collections have different internal structures (array, linked list, tree, hash table, graph), but clients want to traverse them uniformly without knowing or caring about the internal representation. If you expose the internal structure (array index, node pointers), clients become coupled to it — changing the data structure breaks all traversal code. **How do you provide uniform sequential access to any collection while hiding its internal implementation?** Iterator encapsulates the traversal cursor and algorithm in a separate object with a universal interface (hasNext/next).
+
 **Intent:** Provide sequential access to elements of a collection without exposing its internal representation.
 
 **Core Mechanism:** Encapsulates traversal logic in a separate object (cursor). Collection provides a factory method to create iterators. Client uses uniform interface (`hasNext()`/`next()`) regardless of collection type.
@@ -3549,6 +3610,9 @@ public class IteratorDemo {
 **Definition:** The Visitor pattern represents an operation to be performed on the elements of an object structure. It lets you define new operations without changing the classes of the elements on which they operate, using double-dispatch to invoke the correct method based on both the visitor and element types.
 
 **In Simple Terms:** Think of a tax inspector visiting different types of businesses — restaurants, shops, factories. Each business "accepts" the inspector and shows their books. The inspector applies different tax rules to each type. You can add new inspectors (new operations) without changing how businesses work. Visitor adds operations to objects from the outside.
+
+
+**The Core Problem:** You have a stable hierarchy of element classes (AST nodes, document parts, shape types) and you frequently need to add NEW OPERATIONS on them (type-check, optimize, render, export). Adding each operation as a method to every element class forces you to modify all element classes for every new operation — violating OCP and requiring coordination across many files. **How do you add operations to a class hierarchy without modifying the classes themselves?** Visitor separates the operation from the object structure via double dispatch — new operations are new visitor classes, zero changes to elements.
 
 **Intent:** Add operations to an object structure without modifying the element classes. Separates algorithms from the objects they operate on.
 
@@ -3673,6 +3737,9 @@ public class VisitorDemo {
 **Definition:** The Null Object pattern provides a non-functional object as a default substitute for a null reference, implementing the expected interface with neutral ("do nothing") behavior. It eliminates repetitive null-checking code by ensuring clients always receive a valid object that can be safely invoked.
 
 **In Simple Terms:** Instead of getting "nothing" (null) when there's no value, you get a polite stand-in that does nothing but doesn't crash. Think of a silent alarm clock — it implements `ring()` but produces no sound. You can call it without checking "do I even have an alarm?" first. Null Object is a safe, do-nothing placeholder that implements the real interface.
+
+
+**The Core Problem:** Null references cause NullPointerException — the "billion dollar mistake." Every method call on a potentially-null object requires a defensive check (`if (x != null) x.doThing()`), polluting code with repetitive guards. Miss one check and you crash. **How do you eliminate null checks throughout your codebase while still handling "absence" gracefully?** Null Object provides a real object that implements the interface with safe do-nothing behavior — callers never receive null, so they never need to check for it. The absence of real behavior becomes explicit and safe rather than implicit and dangerous.
 
 **Intent:** Provide an object with defined neutral behavior as a surrogate for the absence of an object, eliminating the need for null checks.
 
